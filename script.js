@@ -63,4 +63,19 @@ const typed = new Typed('.multiple-text', {
     backDelay: 1000,
     loop: true,
 })
+document.addEventListener('DOMContentLoaded', () => {
+    const portfolioBoxes = document.querySelectorAll('.portfolio-box');
+    const contentDisplay = document.querySelector('.content-display');
 
+    const showContent = (event) => {
+        const box = event.currentTarget;
+        const content = box.getAttribute('data-content');
+        contentDisplay.textContent = content;
+        contentDisplay.style.display = 'block';
+    };
+
+    portfolioBoxes.forEach(box => {
+        box.addEventListener('click', showContent);
+        box.addEventListener('touchstart', showContent);
+    });
+});
